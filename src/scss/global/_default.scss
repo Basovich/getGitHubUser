@@ -1,0 +1,83 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+*::selection {
+  background:  blue;
+  color:  #fff;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #fff !important; /* Цвет фона */
+  -webkit-text-fill-color: black !important; /* цвет текста */
+  color: black !important; /* цвет текста */
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+body,
+html {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0;
+}
+
+section,
+article,
+aside,
+footer,
+header,
+nav,
+hgroup {
+  display:block;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+// .slick-slide:active,
+// .slick-slide {
+//   outline: none;
+// }
+
+/*добавить скрипт который на время ресайза добавляет на таймаут класс*/
+.resize-animation-stopper * {
+  -webkit-animation-duration: 0s !important;
+  animation-duration: 0s !important;
+  -webkit-transition-duration: 0s !important;
+  -o-transition-duration: 0s !important;
+  transition-duration: 0s !important;
+}
+
+// Убираем анимацию, если людей, страдающих расстройствами вестибулярного аппарата.
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+      animation-delay: -1s !important;
+      animation-duration: 1s !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01s !important;
+  }
+}

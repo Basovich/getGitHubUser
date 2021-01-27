@@ -1,0 +1,16 @@
+.error {
+
+  &-message {
+    position: absolute;
+    bottom: -20px;
+    display: none;
+
+    .error ~ & {
+      display: block;
+    }
+  }
+}
+
+
+
+

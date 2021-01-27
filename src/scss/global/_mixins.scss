@@ -1,0 +1,95 @@
+/*
+*       Скрол бары
+*==============================*/
+// Широкий скрол бар
+@mixin scroll-bar-lg {
+	scrollbar-width: auto; // толщина скрол бара
+	scrollbar-color: $gray14 $gray; //первый цвет для ползунка, а второй для всей дорожки
+
+	&::-webkit-scrollbar {
+		width: 8px; // толщина скрол бара
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: $gray; // цвет для всей дорожки
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $gray14; // цвет для ползунка
+	}
+}
+
+// Тонкий скрол бар
+@mixin scroll-bar-sm {
+	scrollbar-width: thin; // толщина скрол бара
+	scrollbar-color: $gray14 $gray; //первый цвет для ползунка, а второй для всей дорожки
+
+	&::-webkit-scrollbar {
+		width: 4px; // толщина скрол бара
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: $gray; // цвет для всей дорожки
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $gray14; // цвет для ползунка
+	}
+}
+
+
+/*
+*  Удаляем возможность выбрать элемент
+*-------------------------------------------*/
+@mixin non-select {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/*
+*  Скрываем элемент от пользователя,
+*  но не от скрин ридера или клавиатуры
+*
+*  не возможно анимировать
+*-------------------------------------------*/
+@mixin visual-hidden {
+	position: absolute;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(0px 0px 99.9% 99.9%);
+	overflow: hidden;
+	height: 1px;
+	width: 1px;
+	padding: 0;
+	border: 0;
+	top: 50%;
+}
+
+/*
+*  Обрезаем текст и добавляем "..."
+*-------------------------------------------*/
+@mixin overflow-ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/*
+*  Адаптивный текст
+*-------------------------------------------*/
+$maxWidth: 1280; // рабочая ширина макета
+@mixin adaptiv-font($pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$maxWidth: $maxWidth - 320;
+	font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+// Приминение
+// h1{
+//  @include adaptiv-font(40, 24);
+// }
