@@ -156,7 +156,6 @@ class GetGitHubUsers {
 		this.addCard(card);
 	}
 
-
 	addCard(card) {
 		if (this.isEmpty) {
 			this.isNoUserBlock.style.display = 'none';
