@@ -7,6 +7,7 @@ class GetGitHubUsers {
 		this.userRepoList = '';
 		this.userName = '';
 		this.url = `https://api.github.com/users/`;
+		this.form = document.querySelector('[data-form]');
 		this.button = document.querySelector('[data-button-add]');
 		this.input = document.querySelector('[data-input-user-name]');
 		this.errorMessage = document.querySelector('[data-error-message]');
@@ -23,7 +24,10 @@ class GetGitHubUsers {
 	}
 
 	listenerAddUser() {
-		this.button.addEventListener('click', () => {
+		this.form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			this.validate('');
+
 			const val = this.input.value.trim();
 			if (!val) {
 				this.validate('Enter username');
@@ -33,7 +37,7 @@ class GetGitHubUsers {
 			this.userName = val;
 			this.input.value = '';
 			this.onSearchUser();
-		});
+		})
 	}
 
 	listenerFocusInput() {
